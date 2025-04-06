@@ -34,20 +34,20 @@ public class CarController {
     }
 
     @GetMapping("/{licensePlate}")
-    public CarDTO getCar(@Valid @PathVariable String licensePlate) throws EntityNotFoundException {
+    public CarDTO getCar(@Valid @PathVariable String licensePlate) {
         return CarMapper.makeCarDTO(carService.find(licensePlate));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CarDTO createCar(@Valid @RequestBody CarDTO carDTO) throws ConstraintsViolationException {
+    public CarDTO createCar(@Valid @RequestBody CarDTO carDTO) {
         CarDO carDO = CarMapper.makeCarDO(carDTO);
         return CarMapper.makeCarDTO(carService.create(carDO));
     }
 
 
     @DeleteMapping("/{licensePlate}")
-    public void deleteCar(@Valid @PathVariable String licensePlate) throws EntityNotFoundException, ConstraintsViolationException {
+    public void deleteCar(@Valid @PathVariable String licensePlate) {
         carService.delete(licensePlate);
     }
 
