@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarMapper {
+    private CarMapper() {
+        // Private constructor to prevent instantiation
+    }
 
     public static CarDTO makeCarDTO(CarDO carDO) {
 
