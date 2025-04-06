@@ -49,21 +49,21 @@ public class DriverController {
 
 
     @GetMapping("/{driverId}")
-    public DriverDTO getDriver(@Valid @PathVariable long driverId) throws EntityNotFoundException {
+    public DriverDTO getDriver(@Valid @PathVariable long driverId) {
         return DriverMapper.makeDriverDTO(driverService.find(driverId));
     }
 
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DriverDTO createDriver(@Valid @RequestBody DriverDTO driverDTO) throws ConstraintsViolationException {
+    public DriverDTO createDriver(@Valid @RequestBody DriverDTO driverDTO) {
         DriverDO driverDO = DriverMapper.makeDriverDO(driverDTO);
         return DriverMapper.makeDriverDTO(driverService.create(driverDO));
     }
 
 
     @DeleteMapping("/{driverId}")
-    public void deleteDriver(@Valid @PathVariable long driverId) throws EntityNotFoundException {
+    public void deleteDriver(@Valid @PathVariable long driverId) {
         driverService.delete(driverId);
     }
 
